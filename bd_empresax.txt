@@ -1,0 +1,20 @@
+create database empresax;
+use empresax;
+create table usuario (id_tblusuario int (111) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                      nome_tblusuario VARCHAR(150) NOT NULL,
+                      email_tblusuario VARCHAR(150) NOT NULL UNIQUE,
+					  idade_tblusuario int(2),
+                      senha_tblusuario LONGTEXT NOT NULL);
+					  
+					  
+create table bandas (id_bandas int (111) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                      nome_bandas VARCHAR(150) NOT NULL);
+					  
+
+create table discos(id_tbl_discos int (10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                    titulo_tbl_discos VARCHAR(255) NOT NULL,
+					ano_tbl_discos YEAR (4) NOT NULL,
+					capa_tbl_discos VARCHAR (255) NOT NULL,
+					id_bandas int (111) NOT NULL references bandas (id_bandas));
+
+select bandas.nome_bandas, discos.titulo_tbl_discos,discos.ano_tbl_discos,discos.capa_tbl_discos from discos inner join bandas on bandas.id_bandas=discos.id_bandas;
